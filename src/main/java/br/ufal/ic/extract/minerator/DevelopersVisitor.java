@@ -9,7 +9,6 @@ import br.com.metricminer2.scm.SCMRepository;
 public class DevelopersVisitor implements CommitVisitor {
 
 	public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
-		
 		writer.write(
 			commit.getHash(),
 			commit.getCommitter().getName()
