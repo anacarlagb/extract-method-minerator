@@ -18,7 +18,7 @@ public class MyStudy implements Study{
 		new RepositoryMining()
 		.in(GitRepository.singleProject("C:\\Users\\Ana Carla\\workspace\\SweetHome3D"))
 		.through(Commits.all())
-		.process(new DevelopersVisitor(), new CSVFile("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestLog4jHistoric.csv"))
+		.process(new JavaParserVisitor(), new CSVFile("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestLog4jHistoric.csv"))
 		.mine();
 	}
 	
