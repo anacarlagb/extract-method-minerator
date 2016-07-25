@@ -1,16 +1,18 @@
 package br.ufal.ic.stats;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MethodStats {
 
 	private String id;
 	
-	private Map<String, Integer> statementsPerCommit = new HashMap<String, Integer>();
+	private Map<String, Integer> statementsPerCommit;
 	
 	public MethodStats(String id) {
 		this.id = id;
+		statementsPerCommit = new LinkedHashMap<String, Integer>();
 	}
 	
 	public void put(String commit, Integer numberOfStatements) {
@@ -24,6 +26,11 @@ public class MethodStats {
 	
 	public Integer getNumberOfStatments(String commit){
 		return statementsPerCommit.get(commit);
+	}
+
+	
+	public Map<String, Integer> getStatementsPerCommit() {
+		return statementsPerCommit;
 	}
 
 	@Override

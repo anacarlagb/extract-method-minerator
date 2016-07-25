@@ -8,11 +8,15 @@ import br.ufal.ic.stats.MethodStats;
 public class MethodVisitor extends ASTVisitor {
 
 	private String methodName;
-	private int numberOfStatements;
+	private int numberOfStatements = 0;
 
 	public boolean visit(MethodDeclaration node) {
 		methodName = node.getName().getFullyQualifiedName();
-		numberOfStatements = node.getBody().getLength();
+		if(node.getBody() != null){
+			if(node.getBody().statements() != null){
+				numberOfStatements = node.getBody().statements().size();
+			}
+		}
 		return super.visit(node);
 	}
 
