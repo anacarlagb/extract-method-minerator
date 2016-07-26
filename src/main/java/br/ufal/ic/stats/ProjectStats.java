@@ -40,7 +40,11 @@ public class ProjectStats {
 		System.out.print("           ");
 		commits.forEach(commit -> System.out.print(commit + "| "));
 		System.out.println();
+<<<<<<< HEAD
 		methodsStatsMap 
+=======
+		methodsStatsMap
+>>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
 			.entrySet()
 			.forEach( methodStatsMap ->{
 				System.out.print(methodStatsMap.getKey() + "  |");

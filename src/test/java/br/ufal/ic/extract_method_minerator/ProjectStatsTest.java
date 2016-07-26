@@ -2,6 +2,7 @@ package br.ufal.ic.extract_method_minerator;
 
 import static org.junit.Assert.assertEquals;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,10 @@ import org.junit.Test;
 
 import br.ufal.ic.extract.minerator.csv.CsvWriter;
 import br.ufal.ic.stats.MethodStats;
+=======
+import org.junit.Test;
+
+>>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
 import br.ufal.ic.stats.ProjectStats;
 
 public class ProjectStatsTest {
@@ -18,7 +23,10 @@ public class ProjectStatsTest {
 	@Test
 	public void shouldCreateMethodStatsMap(){
 		ProjectStats projectStats = new ProjectStats("projectTest");
+<<<<<<< HEAD
 		//populando
+=======
+>>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
 		projectStats.createMethodStats("commit1", "method1", 3);
 		projectStats.createMethodStats("commit1", "method2", 5);
 		projectStats.createMethodStats("commit1", "method3", 9);
@@ -32,8 +40,11 @@ public class ProjectStatsTest {
 		projectStats.createMethodStats("commit3", "method3", 8);
 		
 		assertEquals(projectStats.getMethodStatsMap().size(), 3);
+<<<<<<< HEAD
 		
 		
+=======
+>>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
 		assertEquals(projectStats.getMethodStatsMap()
 				 	.get("method1").getNumberOfStatments("commit1").intValue(), 3);
 		assertEquals(projectStats.getMethodStatsMap()
@@ -50,8 +61,11 @@ public class ProjectStatsTest {
 		assertEquals(projectStats.getMethodStatsMap()
 				.get("method3").getNumberOfStatments("commit3").intValue(), 8);
 		
+<<<<<<< HEAD
 		
 		//Set commit 
+=======
+>>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
 		projectStats.addCommit("commit1");
 		projectStats.addCommit("commit2");
 		projectStats.addCommit("commit3");
@@ -59,6 +73,7 @@ public class ProjectStatsTest {
 		
 	
 	}
+<<<<<<< HEAD
 	
 	
 	@Test
@@ -147,4 +162,6 @@ public class ProjectStatsTest {
 	}
 }
 
+=======
+>>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
 }
