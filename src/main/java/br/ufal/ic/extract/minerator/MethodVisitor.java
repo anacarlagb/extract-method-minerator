@@ -11,6 +11,10 @@ public class MethodVisitor extends ASTVisitor {
 	private int numberOfStatements = 0;
 
 	public boolean visit(MethodDeclaration node) {
+		String parameter =  "(";
+		node.parameters().parallelStream().forEach( n -> {
+			parameter = parameter + "," + n.toString();
+			});
 		methodName = node.getName().getFullyQualifiedName();
 		if(node.getBody() != null){
 			if(node.getBody().statements() != null){
