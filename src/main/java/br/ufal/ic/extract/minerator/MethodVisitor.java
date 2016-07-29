@@ -1,13 +1,7 @@
 package br.ufal.ic.extract.minerator;
 
-<<<<<<< HEAD
-
-
-
-=======
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
->>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
 
 import br.ufal.ic.stats.MethodStats;
 
@@ -17,14 +11,19 @@ public class MethodVisitor extends ASTVisitor {
 	private int numberOfStatements = 0;
 
 	public boolean visit(MethodDeclaration node) {
-<<<<<<< HEAD
-=======
-		String parameter =  "(";
-		node.parameters().parallelStream().forEach( n -> {
-			parameter = parameter + "," + n.toString();
-			});
->>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
-		methodName = node.getName().getFullyQualifiedName();
+		String[] parameter = {"("};
+		if(node.parameters() != null){
+			node.parameters().forEach( n -> {
+				parameter[0] +=  n.toString() + ",";
+				});		
+		}
+		if(parameter[0].length() > 1){
+			parameter[0] = parameter[0].substring(0, parameter[0].length() - 1);
+		}
+		
+		parameter[0] += ")";
+		methodName = node.getName() + parameter[0];
+
 		if(node.getBody() != null){
 			if(node.getBody().statements() != null){
 				numberOfStatements = node.getBody().statements().size();

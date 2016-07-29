@@ -1,5 +1,7 @@
 package br.ufal.ic.extract.minerator;
 
+import java.io.IOException;
+
 import br.com.metricminer2.MetricMiner2;
 import br.com.metricminer2.RepositoryMining;
 import br.com.metricminer2.Study;
@@ -15,11 +17,19 @@ public class MyStudy implements Study{
 	}
 	
 	public void execute() {
+		JavaParserVisitor visitor = new JavaParserVisitor();
 		new RepositoryMining()
-		.in(GitRepository.singleProject("C:\\Users\\Ana Carla\\workspace\\SweetHome3D"))
+		.in(GitRepository.singleProject("C:\\Users\\Ana Carla\\Dropbox\\UFAL\\junitdemo"))
 		.through(Commits.all())
-		.process(new JavaParserVisitor(), new CSVFile("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestLog4jHistoric.csv"))
+		.process(visitor, new CSVFile("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv"))
 		.mine();
+		
+		try {
+			visitor.getProjectStats().writeHistoric();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

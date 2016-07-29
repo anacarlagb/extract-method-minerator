@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 import br.com.metricminer2.domain.Commit;
+import br.com.metricminer2.domain.Modification;
 import br.com.metricminer2.parser.jdt.JDTRunner;
 import br.com.metricminer2.persistence.PersistenceMechanism;
 import br.com.metricminer2.scm.CommitVisitor;
@@ -19,39 +20,45 @@ import br.ufal.ic.stats.MethodStats;
 import br.ufal.ic.stats.ProjectStats;
 
 public class JavaParserVisitor implements CommitVisitor {
-	
-	private ProjectStats projectStats = new ProjectStats("projectName");
 
+	private static ProjectStats projectStats = new ProjectStats("projectName");
 	public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
+		
+		
 		try {
 			repo.getScm().checkout(commit.getHash());
-		
 			List<RepositoryFile> files = repo.getScm().files();
-			
 			for(RepositoryFile file : files) {
-				if(!file.fileNameEndsWith("java")) continue;
-				
+				if(!file.fileNameEndsWith("java")) continue;	
 				File soFile = file.getFile();
-		
 				MethodVisitor visitor = new MethodVisitor();
 				new JDTRunner().visit(visitor, new ByteArrayInputStream(readFile(soFile).getBytes()));
 				projectStats.addCommit(commit.getHash());
 				projectStats.createMethodStats(commit.getHash(), 
 											   visitor.getMethodName(),
 											   visitor.getNumberOfStatements());
-				
-				writer.write(
-						commit.getHash(),
-						file.getFullName()
-				);
-				
+//				writer.write(
+//						commit.getHash(),
+//						file.getFullName()
+//				);
+	
 			}
+			
 			
 		} finally {
 			repo.getScm().reset();
 		}
+
+
 	}
 	
+	
+	
+	public static ProjectStats getProjectStats() {
+		return projectStats;
+	}
+
+
 
 	private String readFile(File f) {
 		try {

@@ -1,22 +1,30 @@
 package br.ufal.ic.stats;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
+import br.ufal.ic.extract.minerator.csv.CsvWriter;
+
+
 
 public class MethodStats {
 
 	private String id;
 	
-	private Map<String, Integer> statementsPerCommit;
+	private List<CommitStats> statementsPerCommit;
 	
 	public MethodStats(String id) {
 		this.id = id;
-		statementsPerCommit = new LinkedHashMap<String, Integer>();
+		statementsPerCommit = new LinkedList<CommitStats>();
 	}
 	
 	public void put(String commit, Integer numberOfStatements) {
-		statementsPerCommit.put(commit, numberOfStatements);
+		statementsPerCommit.add(new CommitStats(commit, numberOfStatements));
 	}
 	
 	
@@ -25,11 +33,19 @@ public class MethodStats {
 	}
 	
 	public Integer getNumberOfStatments(String commit){
-		return statementsPerCommit.get(commit);
+		Optional<CommitStats> commitStatsOptional =  statementsPerCommit
+																.stream()
+																.filter(commitStatsFilter -> 
+																		commitStatsFilter.getCommitHash().equals(commit))
+																.findFirst();
+		if(commitStatsOptional.isPresent()){
+			return commitStatsOptional.get().getNumberOfStatements();
+		}
+		return null;
 	}
 
 	
-	public Map<String, Integer> getStatementsPerCommit() {
+	public List<CommitStats> getStatementsPerCommit() {
 		return statementsPerCommit;
 	}
 
@@ -56,6 +72,16 @@ public class MethodStats {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public void writeHistoric(CsvWriter writer) throws IOException {
+		// TODO Auto-generated method stub
+		writer.write(id);
+		int numberCommits = statementsPerCommit.size();
+		for(int index = numberCommits - 1; index >= 0; index --){
+			int numberOfStatements = statementsPerCommit.get(index).getNumberOfStatements();
+			writer.write(Integer.toString(numberOfStatements));
+		}
 	}
 	
 	

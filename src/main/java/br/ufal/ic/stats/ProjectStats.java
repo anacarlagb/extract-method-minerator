@@ -1,5 +1,7 @@
 package br.ufal.ic.stats;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,8 +9,11 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.function.Consumer;
+
+import br.ufal.ic.extract.minerator.csv.CsvWriter;
 
 public class ProjectStats {
 	private String nameProject;
@@ -36,32 +41,28 @@ public class ProjectStats {
 		return methodsStatsMap;
 	}
 
-	public void writeHistoric(){
-		System.out.print("           ");
-		commits.forEach(commit -> System.out.print(commit + "| "));
+	public void writeHistoric() throws IOException{		
+		CsvWriter writer = new CsvWriter("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv" , ',', Charset.forName("ISO-8859-1"));
+		List<String> commitsSet = new ArrayList<>(commits);
+		System.out.print(" ");
+		for(int idx = commitsSet.size() - 1; idx >= 0 ; idx --){
+			System.out.print(commitsSet.get(idx) + " ");
+			writer.write(commitsSet.get(idx));
+		}
 		System.out.println();
-<<<<<<< HEAD
-		methodsStatsMap 
-=======
-		methodsStatsMap
->>>>>>> 712dba9ac4e37f94caa0783f566320ec7f612f3f
-			.entrySet()
-			.forEach( methodStatsMap ->{
-				System.out.print(methodStatsMap.getKey() + "  |");
-				methodStatsMap
-				        .getValue()
-				        .getStatementsPerCommit()
-				        .entrySet()
-				        .forEach( statementPerCommit -> {
-				        	System.out.print(statementPerCommit.getValue() + "   |");
-				        });
-				System.out.println();
-			});
-		methodsStatsMap
-			.entrySet()
-			.forEach( methodStatsMap -> {
-				methodStatsMap.getValue();
-			});
+		writer.endRecord();
+		List<String> methodsSet = new ArrayList<>(methodsStatsMap.keySet());  
+		for(int i = methodsSet.size() -1 ; i >= 0; i--){
+			MethodStats method = methodsStatsMap.get(methodsSet.get(i));
+			method.writeHistoric(writer);
+			System.out.println();
+			writer.endRecord();
+		}
+		
+		writer.close();
+				
+	
+		
 	}
 	
 	public void addCommit(String commit){
