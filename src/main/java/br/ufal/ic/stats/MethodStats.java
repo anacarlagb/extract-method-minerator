@@ -41,7 +41,7 @@ public class MethodStats {
 		if(commitStatsOptional.isPresent()){
 			return commitStatsOptional.get().getNumberOfStatements();
 		}
-		return null;
+		return 0;
 	}
 
 	
@@ -74,15 +74,6 @@ public class MethodStats {
 		return true;
 	}
 
-	public void writeHistoric(CsvWriter writer) throws IOException {
-		// TODO Auto-generated method stub
-		writer.write(id);
-		int numberCommits = statementsPerCommit.size();
-		for(int index = numberCommits - 1; index >= 0; index --){
-			int numberOfStatements = statementsPerCommit.get(index).getNumberOfStatements();
-			writer.write(Integer.toString(numberOfStatements));
-		}
-	}
-	
+
 	
 }

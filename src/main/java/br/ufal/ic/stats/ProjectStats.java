@@ -19,11 +19,12 @@ public class ProjectStats {
 	private String nameProject;
 	private Map<String, MethodStats> methodsStatsMap;
 	private Set<String> commits;
-	
-	public ProjectStats(String nameProject){
+	private CsvWriter writer;
+	public ProjectStats(String nameProject, String projectStatsUrl){
 		this.nameProject = nameProject;
 		methodsStatsMap = new LinkedHashMap<String, MethodStats>();;
 		commits = new LinkedHashSet<String>();
+		writer = new CsvWriter(projectStatsUrl , ',', Charset.forName("ISO-8859-1"));
 	}
 
 	public void createMethodStats(String commit, String methodName, int numberOfStatements) {
@@ -42,27 +43,29 @@ public class ProjectStats {
 	}
 
 	public void writeHistoric() throws IOException{		
-		CsvWriter writer = new CsvWriter("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv" , ',', Charset.forName("ISO-8859-1"));
+		
 		List<String> commitsSet = new ArrayList<>(commits);
-		System.out.print(" ");
-		for(int idx = commitsSet.size() - 1; idx >= 0 ; idx --){
-			System.out.print(commitsSet.get(idx) + " ");
-			writer.write(commitsSet.get(idx));
-		}
-		System.out.println();
-		writer.endRecord();
-		List<String> methodsSet = new ArrayList<>(methodsStatsMap.keySet());  
+		writer.write("Commits\\Methods");
+		List<String> methodsSet = new ArrayList<>(methodsStatsMap.keySet()); 
 		for(int i = methodsSet.size() -1 ; i >= 0; i--){
 			MethodStats method = methodsStatsMap.get(methodsSet.get(i));
-			method.writeHistoric(writer);
-			System.out.println();
+			writer.write(method.getId());
+		}
+		writer.endRecord();
+		for(int idx = commitsSet.size() - 1; idx >= 0 ; idx --){
+			String commit = commitsSet.get(idx);
+			writer.write(commit);
+			for(int i = methodsSet.size() -1 ; i >= 0; i--){
+				MethodStats method = methodsStatsMap.get(methodsSet.get(i));
+				int numberOfStatementsPerCommit = method.getNumberOfStatments(commit);
+				writer.write(Integer.toString(numberOfStatementsPerCommit));
+			}
 			writer.endRecord();
 		}
 		
-		writer.close();
-				
-	
 		
+		writer.close();
+			
 	}
 	
 	public void addCommit(String commit){

@@ -21,7 +21,7 @@ import br.ufal.ic.stats.ProjectStats;
 
 public class JavaParserVisitor implements CommitVisitor {
 
-	private static ProjectStats projectStats = new ProjectStats("projectName");
+	private static ProjectStats projectStats = new ProjectStats("projectName", "C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv");
 	public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
 		
 		
@@ -37,11 +37,7 @@ public class JavaParserVisitor implements CommitVisitor {
 				projectStats.createMethodStats(commit.getHash(), 
 											   visitor.getMethodName(),
 											   visitor.getNumberOfStatements());
-//				writer.write(
-//						commit.getHash(),
-//						file.getFullName()
-//				);
-	
+
 			}
 			
 			

@@ -23,7 +23,7 @@ public class ProjectStatsTest {
 	
 	@Test
 	public void shouldCreateMethodStatsMap() throws IOException{
-		ProjectStats projectStats = new ProjectStats("projectTest");
+		ProjectStats projectStats = new ProjectStats("projectTest", "C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv");
 
 		//populando
 
