@@ -68,6 +68,25 @@ public class ProjectStats {
 			
 	}
 	
+	public void createHistoricBackup(String path) throws IOException{
+		writer = new CsvWriter(path , ',', Charset.forName("ISO-8859-1"));
+		List<String> commitsSet = new ArrayList<>(commits);
+		
+		for(int idx = commitsSet.size() - 1; idx >= 0 ; idx --){
+			System.out.print(commitsSet.get(idx) + " ");
+			writer.write(commitsSet.get(idx));
+		}
+		writer.endRecord();
+ 		List<String> methodsSet = new ArrayList<>(methodsStatsMap.keySet());  
+ 		for(int i = methodsSet.size() -1 ; i >= 0; i--){
+			MethodStats method = methodsStatsMap.get(methodsSet.get(i));
+			method.writeHistoric(writer);
+ 			writer.endRecord();
+ 		}	
+		writer.close();
+		
+	}
+	
 	public void addCommit(String commit){
 		commits.add(commit);
 	}

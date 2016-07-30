@@ -48,6 +48,17 @@ public class MethodStats {
 	public List<CommitStats> getStatementsPerCommit() {
 		return statementsPerCommit;
 	}
+	
+	public void writeHistoric(CsvWriter writer) throws IOException {
+		// TODO Auto-generated method stub
+		writer.write(id);
+		int numberCommits = statementsPerCommit.size();
+		for(int index = numberCommits - 1; index >= 0; index --){
+			int numberOfStatements = statementsPerCommit.get(index).getNumberOfStatements();
+			writer.write(Integer.toString(numberOfStatements));
+		}
+	}
+		
 
 	@Override
 	public int hashCode() {

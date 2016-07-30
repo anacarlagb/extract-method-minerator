@@ -43,7 +43,7 @@ public class ProjectStatsTest {
 		projectStats.addCommit("commit3");
 		projectStats.addCommit("commit2");
 		projectStats.addCommit("commit1");
-		projectStats.writeHistoric();
+		projectStats.createHistoricBackup("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv");;
 
 		assertEquals(projectStats.getMethodStatsMap().size(), 3);
 
