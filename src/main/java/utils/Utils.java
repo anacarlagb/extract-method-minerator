@@ -25,5 +25,9 @@ public class Utils {
 	public static final String SWEET3D_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\Sweet3DBackup.csv";
 	
 	
+	public static String generateKey(String text1, String text2){
+		return text1 + "." + text2;
+	}
+	
 	
 }

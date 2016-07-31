@@ -33,9 +33,14 @@ public class JavaParserVisitor implements CommitVisitor {
 				if(!file.fileNameEndsWith("java")) continue;	
 				File soFile = file.getFile();
 				MethodVisitor visitor = new MethodVisitor();
+				
 				new JDTRunner().visit(visitor, new ByteArrayInputStream(readFile(soFile).getBytes()));
+		
+				String fileName = soFile.getPath();
+				
 				projectStats.addCommit(commit.getHash());
 				projectStats.createMethodStats(commit.getHash(), 
+											   fileName,
 											   visitor.getMethodName(),
 											   visitor.getNumberOfStatements());
 

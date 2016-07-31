@@ -28,17 +28,17 @@ public class ProjectStatsTest {
 
 		//populando
 
-		projectStats.createMethodStats("commit3", "method1", 3);
-		projectStats.createMethodStats("commit3", "method2", 5);
-		projectStats.createMethodStats("commit3", "method3", 9);
+		projectStats.createMethodStats("commit3", null, "method1", 3);
+		projectStats.createMethodStats("commit3", null, "method2", 5);
+		projectStats.createMethodStats("commit3", null, "method3", 9);
 		
-		projectStats.createMethodStats("commit2", "method1", 12);
-		projectStats.createMethodStats("commit2", "method2", 5);
-		projectStats.createMethodStats("commit2", "method3", 3);
+		projectStats.createMethodStats("commit2", null, "method1", 12);
+		projectStats.createMethodStats("commit2", null, "method2", 5);
+		projectStats.createMethodStats("commit2", null, "method3", 3);
 		
-		projectStats.createMethodStats("commit1", "method1", 6);
-		projectStats.createMethodStats("commit1", "method2", 8);
-		projectStats.createMethodStats("commit1", "method3", 8);
+		projectStats.createMethodStats("commit1", null, "method1", 6);
+		projectStats.createMethodStats("commit1", null, "method2", 8);
+		projectStats.createMethodStats("commit1", null, "method3", 8);
 		
 		
 		projectStats.addCommit("commit3");

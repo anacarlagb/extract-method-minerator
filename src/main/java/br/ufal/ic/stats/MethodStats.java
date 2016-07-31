@@ -14,12 +14,13 @@ import br.ufal.ic.extract.minerator.csv.CsvWriter;
 
 public class MethodStats {
 
-	private String id;
-	
+	private String methodName;
+	private String className;
 	private List<CommitStats> statementsPerCommit;
 	
-	public MethodStats(String id) {
-		this.id = id;
+	public MethodStats(String className, String methodName) {
+		this.className =  className;
+		this.methodName = methodName;
 		statementsPerCommit = new LinkedList<CommitStats>();
 	}
 	
@@ -28,10 +29,16 @@ public class MethodStats {
 	}
 	
 	
-	public String getId(){
-		return id;
+	public String getMethodName(){
+		return methodName;
 	}
 	
+	
+	
+	public String getClassName() {
+		return className;
+	}
+
 	public Integer getNumberOfStatments(String commit){
 		Optional<CommitStats> commitStatsOptional =  statementsPerCommit
 																.stream()
@@ -51,7 +58,8 @@ public class MethodStats {
 	
 	public void writeHistoric(CsvWriter writer) throws IOException {
 		// TODO Auto-generated method stub
-		writer.write(id);
+		writer.write(className);
+		writer.write(methodName);
 		int numberCommits = statementsPerCommit.size();
 		for(int index = numberCommits - 1; index >= 0; index --){
 			int numberOfStatements = statementsPerCommit.get(index).getNumberOfStatements();
@@ -64,7 +72,7 @@ public class MethodStats {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((methodName == null) ? 0 : methodName.hashCode());
 		return result;
 	}
 
@@ -77,10 +85,10 @@ public class MethodStats {
 		if (getClass() != obj.getClass())
 			return false;
 		MethodStats other = (MethodStats) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (methodName == null) {
+			if (other.methodName != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!methodName.equals(other.methodName))
 			return false;
 		return true;
 	}
