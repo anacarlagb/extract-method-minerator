@@ -17,13 +17,14 @@ import org.junit.Test;
 
 
 import br.ufal.ic.stats.ProjectStats;
+import utils.Utils;
 
 public class ProjectStatsTest {
 
 	
 	@Test
 	public void shouldCreateMethodStatsMap() throws IOException{
-		ProjectStats projectStats = new ProjectStats("projectTest", "C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv");
+		ProjectStats projectStats = new ProjectStats("projectTest");
 
 		//populando
 
@@ -43,7 +44,7 @@ public class ProjectStatsTest {
 		projectStats.addCommit("commit3");
 		projectStats.addCommit("commit2");
 		projectStats.addCommit("commit1");
-		projectStats.createHistoricBackup("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv");;
+		projectStats.createHistoricBackup(Utils.HSQLDB_CSV);
 
 		assertEquals(projectStats.getMethodStatsMap().size(), 3);
 
@@ -64,8 +65,7 @@ public class ProjectStatsTest {
 				.get("method3").getNumberOfStatments("commit1").intValue(), 8);
 		
 
-		
-		//Set commit 
+	
 
 				
 	

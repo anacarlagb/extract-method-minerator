@@ -18,10 +18,11 @@ import br.com.metricminer2.scm.RepositoryFile;
 import br.com.metricminer2.scm.SCMRepository;
 import br.ufal.ic.stats.MethodStats;
 import br.ufal.ic.stats.ProjectStats;
+import utils.Utils;
 
 public class JavaParserVisitor implements CommitVisitor {
 
-	private static ProjectStats projectStats = new ProjectStats("projectName", "C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv");
+	private static ProjectStats projectStats = new ProjectStats("HsqlDB");
 	public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
 		
 		

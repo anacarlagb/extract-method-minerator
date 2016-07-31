@@ -8,6 +8,7 @@ import br.com.metricminer2.Study;
 import br.com.metricminer2.persistence.csv.CSVFile;
 import br.com.metricminer2.scm.GitRepository;
 import br.com.metricminer2.scm.commitrange.Commits;
+import utils.Utils;
 
 public class MyStudy implements Study{
 	
@@ -19,13 +20,14 @@ public class MyStudy implements Study{
 	public void execute() {
 		JavaParserVisitor visitor = new JavaParserVisitor();
 		new RepositoryMining()
-		.in(GitRepository.singleProject("C:\\Users\\Ana Carla\\Dropbox\\UFAL\\junitdemo"))
+		.in(GitRepository.singleProject(Utils.HSQLDB_URL))
 		.through(Commits.all())
-		.process(visitor, new CSVFile("C:\\Users\\Ana Carla\\ProjetosAnalisados\\TestHistoricJUnitDemo.csv"))
+		.process(visitor, new CSVFile(Utils.RESOURCE))
 		.mine();
 		
 		try {
-			visitor.getProjectStats().writeHistoric();
+			JavaParserVisitor.getProjectStats().writeHistoric(Utils.HSQLDB_CSV);
+			JavaParserVisitor.getProjectStats().createHistoricBackup(Utils.HSQLDB_CSV_BACKUP);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

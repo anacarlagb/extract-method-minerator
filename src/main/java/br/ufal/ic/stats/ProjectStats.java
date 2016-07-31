@@ -20,11 +20,12 @@ public class ProjectStats {
 	private Map<String, MethodStats> methodsStatsMap;
 	private Set<String> commits;
 	private CsvWriter writer;
-	public ProjectStats(String nameProject, String projectStatsUrl){
+	
+	public ProjectStats(String nameProject){
 		this.nameProject = nameProject;
 		methodsStatsMap = new LinkedHashMap<String, MethodStats>();;
 		commits = new LinkedHashSet<String>();
-		writer = new CsvWriter(projectStatsUrl , ',', Charset.forName("ISO-8859-1"));
+		
 	}
 
 	public void createMethodStats(String commit, String methodName, int numberOfStatements) {
@@ -42,8 +43,8 @@ public class ProjectStats {
 		return methodsStatsMap;
 	}
 
-	public void writeHistoric() throws IOException{		
-		
+	public void writeHistoric(String projectStatsUrl) throws IOException{		
+		writer = new CsvWriter(projectStatsUrl , ',', Charset.forName("ISO-8859-1"));
 		List<String> commitsSet = new ArrayList<>(commits);
 		writer.write("Commits\\Methods");
 		List<String> methodsSet = new ArrayList<>(methodsStatsMap.keySet()); 
