@@ -66,6 +66,7 @@ public class ProjectStats {
 			for(int i = methodsSet.size() -1 ; i >= 0; i--){
 				MethodStats method = methodsStatsMap.get(methodsSet.get(i));
 				int numberOfStatementsPerCommit = method.getNumberOfStatments(commit);
+				writer.write("");
 				writer.write(Integer.toString(numberOfStatementsPerCommit));
 			}
 			writer.endRecord();

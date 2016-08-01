@@ -26,8 +26,8 @@ public class MyStudy implements Study{
 		.mine();
 		
 		try {
-			//JavaParserVisitor.getProjectStats().writeHistoric(Utils.RESOURCE);
-			JavaParserVisitor.getProjectStats().createHistoricBackup(Utils.RESOURCE);
+			JavaParserVisitor.getProjectStats().writeHistoric(Utils.RESOURCE);
+			//JavaParserVisitor.getProjectStats().createHistoricBackup(Utils.RESOURCE);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
