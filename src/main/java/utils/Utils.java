@@ -8,7 +8,8 @@ public class Utils {
 	public static final String LOG4J_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\log4j";
 	public static final String HSQLDB_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\hsqldb";
 	public static final String SWEET3D_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\sweethome3d";
-	
+	public static final String CHECKSTYLE_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\checkstyle";
+	public static final String PMD_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\pmd";
 	
 	
 	public static final String JUNIT_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\JunitStats.csv";
@@ -16,6 +17,8 @@ public class Utils {
 	public static final String LOG4J_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Log4jStats.csv";
 	public static final String HSQLDB_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\HsqldbStats.csv";
 	public static final String SWEET3D_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Sweet3D.csv";
+	public static final String PMD_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\PmdStats.csv";
+	public static final String CHECKSTYLE_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\CheckstyleStats.csv";
 	
 	
 	public static final String JUNIT_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\JunitStatsBackup.csv";
@@ -23,6 +26,8 @@ public class Utils {
 	public static final String LOG4J_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\Log4jStatsBackup.csv";
 	public static final String HSQLDB_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\HsqldbStatsBackup.csv";
 	public static final String SWEET3D_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\Sweet3DBackup.csv";
+	public static final String PMD_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\PmdStatsBackup.csv";
+	public static final String CHECKSTYLE_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\CheckstyleStatsBackup.csv";
 	
 	
 	public static String generateKey(String text1, String text2){
