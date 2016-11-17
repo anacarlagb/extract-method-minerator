@@ -20,14 +20,14 @@ public class MyStudy implements Study{
 	public void execute() {
 		JavaParserVisitor visitor = new JavaParserVisitor();
 		new RepositoryMining()
-		.in(GitRepository.singleProject(Utils.JUNIT_URL))
+		.in(GitRepository.singleProject(Utils.JHOTDRAW7_URL))
 		.through(Commits.all())
 		.process(visitor, new CSVFile(Utils.RESOURCE))
 		.mine();
 		
 		try {
-			JavaParserVisitor.getProjectStats().writeHistoric(Utils.JUNIT_CSV);
-			JavaParserVisitor.getProjectStats().createHistoricBackup(Utils.JUNIT_CSV_BACKUP);
+			//JavaParserVisitor.getProjectStats().writeHistoric(Utils.JHOTDRAW7_CSV);
+			JavaParserVisitor.getProjectStats().createHistoricBackup(Utils.JHOTDRAW7_CSV_BACKUP);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

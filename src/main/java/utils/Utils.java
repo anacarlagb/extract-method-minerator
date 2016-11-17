@@ -10,7 +10,8 @@ public class Utils {
 	public static final String SWEET3D_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\sweethome3d";
 	public static final String CHECKSTYLE_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\checkstyle";
 	public static final String PMD_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\pmd";
-	
+	public static final String JUNITDEMO_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\junitdemo";
+	public static final String JHOTDRAW7_URL = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\JHotDraw7";
 	
 	public static final String JUNIT_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\JunitStats.csv";
 	public static final String ANDROID_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\AndroidStats.csv";
@@ -19,6 +20,8 @@ public class Utils {
 	public static final String SWEET3D_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Sweet3D.csv";
 	public static final String PMD_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\PmdStats.csv";
 	public static final String CHECKSTYLE_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\CheckstyleStats.csv";
+	public static final String JUNITDEMO_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\JunitDemoStats.csv";
+	public static final String JHOTDRAW7_CSV = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\JHotDraw7Stats.csv";
 	
 	
 	public static final String JUNIT_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\JunitStatsBackup.csv";
@@ -28,7 +31,9 @@ public class Utils {
 	public static final String SWEET3D_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\Sweet3DBackup.csv";
 	public static final String PMD_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\PmdStatsBackup.csv";
 	public static final String CHECKSTYLE_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\CheckstyleStatsBackup.csv";
-	
+	public static final String JUNITDEMO_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\JunitDemoStatsBackup.csv";
+	public static final String JHOTDRAW7_CSV_BACKUP = "C:\\Users\\Ana Carla\\ProjetosAnalisados\\StatsHistoric\\Backup\\JHotDraw7StatsBackup.csv";
+
 	
 	public static String generateKey(String text1, String text2){
 		return text1 + "." + text2;
