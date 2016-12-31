@@ -4,19 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Test;
-
-import br.ufal.ic.extract.minerator.csv.CsvWriter;
-import br.ufal.ic.stats.MethodStats;
 
 import org.junit.Test;
 
 
-import br.ufal.ic.stats.ProjectStats;
+import br.ufal.ic.method.stats.ProjectStats;
 import utils.Utils;
 
 public class ProjectStatsTest {
@@ -44,7 +36,7 @@ public class ProjectStatsTest {
 		projectStats.addCommit("commit3");
 		projectStats.addCommit("commit2");
 		projectStats.addCommit("commit1");
-		projectStats.createHistoricBackup(Utils.HSQLDB_CSV);
+		projectStats.createHistoricBackup(Utils.RESOURCE);
 
 		assertEquals(projectStats.getMethodStatsMap().size(), 3);
 
